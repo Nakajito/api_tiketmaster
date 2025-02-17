@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 flex flex-col items-center justify-center w-xl">
+    <h1 class="text-center text-7xl py-5">Eventos de Ticketmaster</h1>
+    {% for evento in eventos %}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+        <img class="w-full" src="{{ evento.images.0.url }}" alt="{{ event.name }}">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{ evento.name }}</div>
+            <p class="text-gray-700 text-base">{{ evento.info }}</p>
+        </div>
+
+        <div class="px-6 pt-4 pb-2">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Fecha: {{ evento.dates.start.localDate }}</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Precio: ${{ evento.priceRanges.0.min }} - ${{ event.priceRanges.0.max }} MXN</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Hora: {{ evento.dates.start.localTime }}</span>
+        </div>
+
+        <div class="px-6 py-4"><a href="{{ evento.url }}" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Comprar boletos</a>
+        </div>
+    </div>    
+        {% endfor %}
+</div>
+
+{% endblock %}
+

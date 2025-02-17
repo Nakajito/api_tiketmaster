@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home
+from .views import events
 
 urlpatterns = [
-    path("client/", home, name="home"),
+    path("events/", events, name="events"),
 ]
